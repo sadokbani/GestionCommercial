@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-title >Se connecter</mat-card-title>
+  <form (ngSubmit)="connexion()" [formGroup]="form" class="example-form">
+      <mat-form-field class="example-full-width">
+        <input [(ngModel)]="email" formControlName="email" matInput placeholder="Email*">
+        <mat-error *ngIf="form.controls['email'].errors?.required">this filed is empty</mat-error>
+        <mat-error *ngIf="form.controls['email'].errors?.email">Not type email</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input  [(ngModel)]="pass" formControlName="password" matInput placeholder="Enter your password*" [type]="hide ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error>this filed is empty</mat-error>
+      </mat-form-field>
+    <mat-error style="margin-bottom: 10px; margin-left: 15%" *ngIf="error">Email or Password incorrect</mat-error>
+
+    <button style="margin-left: 15%;" mat-raised-button color="primary">Se connecter</button>
+
+  </form>
+  <mat-card-title>Créer un compte</mat-card-title>
+
+  <button routerLink="/inscription" mat-raised-button color="accent">Créer un compte</button><br>
+</mat-card>

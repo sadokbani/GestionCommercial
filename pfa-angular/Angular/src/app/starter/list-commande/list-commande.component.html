@@ -1,0 +1,60 @@
+
+<mat-grid-list cols="4" rowHeight="100px" *ngFor="let a of listProduits">
+  <mat-grid-tile colspan="1">
+    <img style="width: 50%; height: 50%" src="./assets/img/{{a.image}}">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <mat-card-header>
+    <mat-card-title>{{a.nom}}</mat-card-title>
+    <mat-card-subtitle>{{a.categorie}}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <mat-form-field style="width: 50%">
+      <mat-label>Quantité</mat-label>
+
+      <mat-select  [(value)]="a.quantite">
+        <div *ngFor="let number of numbers">
+        <mat-option [value]="a.quantiteStock-number" *ngIf="a.quantiteStock-number>0">{{a.quantiteStock-number}}</mat-option>
+        <!--<mat-option [value]="a.quantiteStock-1" *ngIf="a.quantiteStock-1>0">{{a.quantiteStock-1}}</mat-option>-->
+        <!--<mat-option [value]="a.quantiteStock-2" *ngIf="a.quantiteStock-2>0">{{a.quantiteStock-2}}</mat-option>-->
+        <!--<mat-option [value]="a.quantiteStock-3" *ngIf="a.quantiteStock-3>0">{{a.quantiteStock-3}}</mat-option>-->
+        <!--<mat-option [value]="a.quantiteStock-4" *ngIf="a.quantiteStock-4>0">{{a.quantiteStock-4}}</mat-option>-->
+        <!--<mat-option [value]="a.quantiteStock-5" *ngIf="a.quantiteStock-5>0">{{a.quantiteStock-5}}</mat-option>-->
+        <!--<mat-option [value]="a.quantiteStock-6" *ngIf="a.quantiteStock-6>0">{{a.quantiteStock-6}}</mat-option>-->
+        </div>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <p>{{a.prix}} DT</p>
+  </mat-grid-tile>
+</mat-grid-list>
+<div style="position: center" *ngIf="!btn">
+  <h1>Votre panier est vide !</h1>
+  <h6>Explorez nos catégories et découvrez nos meilleures offres!</h6>
+</div>
+
+<h1 *ngIf="total()">Total = {{total()}} DT</h1>
+<div style="margin-left: 30px" class="row">
+  <button mat-raised-button color="primary" (click)="ajouterCommande()" [disabled]="!valide">Passer votre commande</button>
+
+  <button  *ngIf="btn" mat-icon-button color="warn" (click)="removee()"><mat-icon>delete_outline</mat-icon></button>
+</div>
+  <!--<mat-grid-list cols="5" rowHeight="100px">-->
+  <!--<mat-grid-tile colspan="1">-->
+
+  <!--</mat-grid-tile>-->
+  <!--<mat-grid-tile colspan="2">-->
+    <!--<p>aaa</p>-->
+    <!--<p>bbbbb</p>-->
+  <!--</mat-grid-tile>-->
+  <!--<mat-grid-tile colspan="1">-->
+
+    <!--<a>ccccw</a>-->
+  <!--</mat-grid-tile>-->
+  <!--<mat-grid-tile colspan="1">-->
+    <!--<a>aaaa</a>-->
+  <!--</mat-grid-tile>-->
+
+<!--</mat-grid-list>-->

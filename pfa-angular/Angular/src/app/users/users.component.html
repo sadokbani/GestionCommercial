@@ -1,0 +1,62 @@
+<br>
+<form (ngSubmit)="ajouterUser()" [formGroup]="form" class="normal-form">
+
+
+  <div class="row">
+    <div class="col-6">
+      <div class="controles-container">
+        <mat-form-field>
+          <input [(ngModel)]="nom" formControlName="firstName" matInput placeholder="First Name*">
+          <mat-error>this filed is empty</mat-error>
+        </mat-form-field><mat-form-field>
+        <input [(ngModel)]="prenom" formControlName="lastName" matInput placeholder="Last Name*">
+        <mat-error>this filed is empty</mat-error>
+      </mat-form-field>
+
+
+
+        <mat-form-field>
+          <input  [(ngModel)]="pass" formControlName="password" matInput placeholder="Enter your password*" [type]="hide ? 'password' : 'text'">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error>this filed is empty</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input [(ngModel)]="passV" formControlName="passwordV" matInput placeholder="Enter your password*" [type]="hide ? 'password' : 'text'">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error>this filed is empty</mat-error>
+        </mat-form-field>
+        <mat-error *ngIf="(pass != passV)">Password invalide</mat-error>
+      </div>
+    </div>
+    <div class="col-6">
+
+      <div class="controles-container">
+        <mat-form-field>
+          <input [(ngModel)]="email" formControlName="email" matInput placeholder="Email*">
+          <mat-error *ngIf="form.controls['email'].errors?.required">this filed is empty</mat-error>
+          <mat-error *ngIf="form.controls['email'].errors?.email">Not type email</mat-error>
+        </mat-form-field>
+        <mat-error style="margin-bottom: 5px" *ngIf="emailv">Email existant</mat-error>
+        <mat-form-field>
+          <input [(ngModel)]="telephone" formControlName="mobile" matInput="tel"  placeholder="Mobile*">
+          <mat-error *ngIf="form.controls['mobile'].errors?.required">this filed is empty</mat-error>
+          <mat-error *ngIf="form.controls['mobile'].errors?.minlength">Not a valid number</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+          <input [(ngModel)]="pays" formControlName="city" matInput placeholder="City*">
+          <mat-error>this filed is empty</mat-error>
+        </mat-form-field>
+
+
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid || (pass != passV)">Submit</button>
+          <button mat-raised-button color="warn" type="reset">Clear</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
+

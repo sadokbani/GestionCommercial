@@ -1,0 +1,35 @@
+<button routerLink="/admin/fournisseurs" style="margin-bottom: 15px" mat-raised-button><mat-icon>undo</mat-icon>Back</button>
+<br>
+<form style="margin-left: 20%; margin-right: 20%" (ngSubmit)="ajouterFournisseur()" [formGroup]="form" class="normal-form">
+
+
+      <div class="controles-container">
+        <mat-form-field>
+          <input  [(ngModel)]="four.nom" formControlName="firstName" matInput placeholder="Name*">
+          <mat-error>this filed is empty</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input [(ngModel)]="four.mail" formControlName="email" matInput placeholder="Email*">
+          <mat-error *ngIf="form.controls['email'].errors?.required">this filed is empty</mat-error>
+          <mat-error *ngIf="form.controls['email'].errors?.email">Not type email</mat-error>
+        </mat-form-field>
+        <mat-error style="margin-bottom: 5px" *ngIf="emailv">Email existant</mat-error>
+        <mat-form-field>
+          <input [(ngModel)]="four.telephone" formControlName="mobile" matInput="tel"  placeholder="Mobile*">
+          <mat-error *ngIf="form.controls['mobile'].errors?.required">this filed is empty</mat-error>
+          <mat-error *ngIf="form.controls['mobile'].errors?.minlength">Not a valid number</mat-error>
+
+        </mat-form-field>
+        <mat-form-field>
+          <input [(ngModel)]="four.adresse" formControlName="city" matInput placeholder="City*">
+          <mat-error>this filed is empty</mat-error>
+        </mat-form-field>
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+          <button mat-raised-button color="warn" type="reset">Clear</button>
+        </div>
+      </div>
+
+
+</form>
+

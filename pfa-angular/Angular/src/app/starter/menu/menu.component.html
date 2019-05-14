@@ -1,0 +1,32 @@
+
+  <mat-toolbar style="background-color: #64638f; color: #cbc9ff">
+    <mat-toolbar-row>
+
+      <img style="width: 10%; height: 170%" src="./assets/logo.png" />
+
+
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a routerLink="" mat-button>Accueil</a>
+        <a href="#" mat-button>Ordinateurs</a>
+        <a href="#" mat-button>Telephones</a>
+        <a href="#" mat-button>Accessoires</a>
+
+
+      <span class="menu-spacer"></span>
+      <a *ngIf="admin" mat-button routerLink="/admin">Admin</a>
+      <a *ngIf="loginService.isUserLoggedIn() && !admin" (click)=" listCommande() " mat-button>List Commande</a>
+      <a (click)="onCreatee()" mat-button *ngIf="!admin">Panier<mat-icon [matBadge]="listProduit()" matBadgeColor="primary" svgIcon="thumbs-up"  ></mat-icon></a>
+        <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" mat-button>Login</a>
+        <a *ngIf="loginService.isUserLoggedIn()" (click)=" logout()" mat-button>Logout</a>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+  <!--<button md-button  *ngFor="let link of links"-->
+          <!--[routerLinkActiveOptions]="{exact: true}"-->
+          <!--routerLinkActive="active" [routerLink]="link.link" >-->
+    <!--<i *ngIf="link.icon" [class]="link.icon"></i>-->
+    <!--<md-icon *ngIf="link.icon"  class="md-24"> {{link.icon}}</md-icon>-->
+    <!--{{link.label}}-->
+  <!--</button>-->

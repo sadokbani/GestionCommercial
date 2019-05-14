@@ -1,0 +1,27 @@
+
+<h3 *ngIf="exist()">Tu n'a pas encore des commandes</h3>
+<div *ngFor="let a of ligneCommande" id="content" #content>
+  <p>{{a[0].commande.date | date}}</p>
+  <button (click)="facture()" mat-raised-button color="primary"  [disabled]="a[0].commande.etat==0">Facture</button>
+  <button (click)="devis()" style="margin-left: 5px" mat-raised-button >Devis</button>
+  <mat-grid-list cols="3" rowHeight="100px" *ngFor="let b of a">
+    <mat-grid-tile colspan="1">
+      <img style="width: 40%; height: 50%" src="./assets/img/{{b.produit.image}}">
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1">
+      <mat-card-header>
+        <mat-card-title>{{b.produit.nom}}</mat-card-title>
+        <mat-card-subtitle>{{b.produit.categorie}}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1">
+      <mat-card-header>
+        <mat-card-title>Quantité</mat-card-title>
+        <mat-card-subtitle>{{b.quantite}}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+</div>
+

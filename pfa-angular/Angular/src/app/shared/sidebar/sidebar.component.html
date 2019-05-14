@@ -1,0 +1,18 @@
+<nav class="sidebar-nav">
+    <ul id="sidebarnav">
+        <!-- First level menu -->
+        <li style="margin-top: 35px; margin-bottom: 10px; " [class.active]="showMenu === sidebarnavItem.title"
+            *ngFor="let sidebarnavItem of sidebarnavItems"
+            [routerLinkActive]="sidebarnavItem.submenu.length != 0 ? '' : 'active'">
+
+            <a [routerLink]="[sidebarnavItem.path]">
+
+                <i [ngClass]="[sidebarnavItem.icon]"></i>
+
+                <span  class="hide-menu">{{sidebarnavItem.title}}</span>
+            </a>
+
+        </li>
+
+    </ul>
+</nav>

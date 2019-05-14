@@ -1,0 +1,37 @@
+
+<div class="container">
+  <div style="margin: 10px">
+    <mdb-carousel   [isControls]="false" [animation]="'slide'">
+      <mdb-carousel-item>
+        <img class="d-block w-100" src="./assets/1.jpg" alt="First slide">
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <img class="d-block w-100" src="./assets/2.jpg" alt="Second slide">
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <img class="d-block w-100" src="./assets/3.jpg" alt="Third slide">
+      </mdb-carousel-item>
+    </mdb-carousel>
+  </div>
+
+  <mat-grid-list cols="3" rowHeight="2:3">
+
+    <mat-grid-tile *ngFor="let produit of prod">
+      <mat-card  class="example-card">
+      <mat-card-header>
+
+        <mat-card-title>{{produit.nom}}</mat-card-title>
+        <mat-card-subtitle>{{produit.categorie}}</mat-card-subtitle>
+      </mat-card-header>
+      <img  class="mx-auto d-block" mat-card-image src="assets/img/{{produit.image}}" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>{{produit.description}}</p>
+        <h6>Prix = {{produit.prix}} DT</h6>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button color="primary" (click)="add(produit)" [disabled]="produit.valide">Add</button>
+      </mat-card-actions>
+    </mat-card></mat-grid-tile>
+
+  </mat-grid-list>
+</div>

@@ -1,0 +1,51 @@
+<button routerLink="/admin/produits" style="margin-bottom: 15px" mat-raised-button><mat-icon>undo</mat-icon>Back</button>
+<br>
+<form style="margin-left: 20%; margin-right: 20%" (ngSubmit)="ajouterProduit()" [formGroup]="form" class="normal-form">
+
+
+  <div class="controles-container">
+    <mat-form-field>
+      <input  [(ngModel)]="prod.nom" formControlName="firstName" matInput placeholder="Name*">
+      <mat-error>this filed is empty</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input  [(ngModel)]="prod.categorie" formControlName="categorie" matInput placeholder="Categorie*">
+      <mat-error>this filed is empty</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea [(ngModel)]="prod.description" formControlName="description" matInput placeholder="Description*"></textarea>
+      <!--<input  [(ngModel)]="prod.description" formControlName="description" matInput placeholder="Description*">-->
+      <mat-error>this filed is empty</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input  [(ngModel)]="prod.prix" formControlName="prix" matInput placeholder="Prix*">
+      <mat-error>this filed is empty</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input  [(ngModel)]="prod.quantiteStock" formControlName="quantiteStock" matInput placeholder="Quantite Stock*">
+      <mat-error>this filed is empty</mat-error>
+    </mat-form-field>
+      <label>Image</label>
+      <input  (change)="onChange($event)" type="file" name="file"/>
+
+
+    <mat-form-field >
+      <mat-select [(value)]="aaaa" formControlName="fournisseur" placeholder="Fournisseur">
+        <mat-option>None</mat-option>
+        <ng-container *ngFor="let fourr of fours">
+          <mat-option value="{{fourr.fourId}}">{{fourr.nom}}</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+
+
+
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+      <button mat-raised-button color="warn" type="reset">Clear</button>
+    </div>
+  </div>
+
+  <!--<input #file type="file"  (change)="preview(file.files)" />-->
+  <!--<img [src]="imgURL" height="200" *ngIf="imgURL">-->
+</form>
