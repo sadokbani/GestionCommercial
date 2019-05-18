@@ -40,6 +40,7 @@ export class MenuComponent implements OnInit {
     // dialogConfig.disableClose = true;
     // dialogConfig.autoFocus = true;
    dialogConfig.width = "50%";
+   dialogConfig.maxHeight=window.innerHeight-50 + 'px';
     this.dialogg.open(ListCommandesComponent, dialogConfig);
     //this.dialog.open(ListCommandesComponent);
   }
@@ -47,6 +48,8 @@ export class MenuComponent implements OnInit {
     const dialogConfig= new MatDialogConfig();
     // dialogConfig.disableClose = true;
     // dialogConfig.autoFocus = true;
+    dialogConfig.maxHeight=window.innerHeight-50 + 'px';
+
     dialogConfig.width = "60%";
     this.dialog.open(ListCommandeComponent, dialogConfig);
     //this.dialog.open(ListCommandeComponent);

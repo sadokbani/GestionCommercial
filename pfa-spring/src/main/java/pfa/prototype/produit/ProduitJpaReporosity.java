@@ -15,3 +15,4 @@ public interface ProduitJpaReporosity extends JpaRepository<Produit, Integer> {
     @Query("select u from Produit u where u.quantiteStock>0")
     List<Produit> findAllProd();
 }
+    
