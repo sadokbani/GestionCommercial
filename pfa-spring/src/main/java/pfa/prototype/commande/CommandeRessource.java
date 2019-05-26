@@ -41,5 +41,16 @@ public class CommandeRessource {
     public List<Commande> getCommadeByIdUser(@PathVariable("idUser") User id){
         return (List<Commande>) commandeJpaReporosity.findByUserId(id);
     }
+    @DeleteMapping("/Commande/{id}")
+    public ResponseEntity<Void> deleteCommande(@PathVariable("id") int id) {
+        Commande commande = commandeJpaReporosity.findById(id).get();
+        if (commande == null) {
+
+            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+        } else {
+            commandeJpaReporosity.deleteById(id);
+            return new ResponseEntity<Void>(HttpStatus.OK);
+        }
+    }
 
 }

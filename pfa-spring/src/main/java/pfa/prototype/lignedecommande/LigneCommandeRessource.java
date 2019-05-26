@@ -2,8 +2,11 @@ package pfa.prototype.lignedecommande;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pfa.prototype.commande.Commande;
+import pfa.prototype.facture.Facture;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -26,5 +29,20 @@ public class LigneCommandeRessource {
     @GetMapping(path = "/LigneCommande/{idCom}")
     public List<Lignedecommande> getCommadeByIdUser(@PathVariable("idCom") Commande id){
         return (List<Lignedecommande>) LignecommandeJpaReporosity.findLignedecommandeByCommande(id);
+    }
+
+    @DeleteMapping("/LigneCommande/{id}")
+    public ResponseEntity<Void> deleteFacture(@PathVariable("id") Commande id) {
+        List<Lignedecommande> LigneCommande = LignecommandeJpaReporosity.findLignedecommandeByCommande(id);
+        if (LigneCommande == null) {
+
+            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+        } else {
+            for (int i = 0; i<LigneCommande.size(); i++){
+                LignecommandeJpaReporosity.delete(LigneCommande.get(i)); 
+            }
+
+            return new ResponseEntity<Void>(HttpStatus.OK);
+        }
     }
 }

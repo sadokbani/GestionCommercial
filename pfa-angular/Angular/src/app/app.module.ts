@@ -55,11 +55,18 @@ import { ListCommandeComponent } from './starter/list-commande/list-commande.com
 import {MatDialogModule} from '@angular/material/dialog';
 
 import { CookieService } from 'ngx-cookie-service';
-
+import {ChartsModule} from "ng2-charts";
 // For MDB Angular Free
 import { CarouselModule, WavesModule } from 'angular-bootstrap-md';
 import { ListCommandesComponent } from './starter/list-commandes/list-commandes.component';
-import { CommandeComponent } from './commandes/commande/commande.component'
+import { CommandeComponent } from './commandes/commande/commande.component';
+import { TelephoneComponent } from './starter/telephone/telephone.component';
+import { AccessoireComponent } from './starter/accessoire/accessoire.component';
+import { PcComponent } from './starter/pc/pc.component';
+import { AdminComponent } from './admin/admin.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { NotificationComponent } from './notification/notification.component';
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelSpeed: 2,
@@ -90,6 +97,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ListCommandeComponent,
     ListCommandesComponent,
     CommandeComponent,
+    TelephoneComponent,
+    AccessoireComponent,
+    PcComponent,
+    AdminComponent,
+    NotificationComponent,
 
 
   ],
@@ -118,7 +130,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatBottomSheetModule,
     MatGridListModule,
     MatDialogModule,
-    CarouselModule, WavesModule
+    CarouselModule, WavesModule,ChartsModule,MatTabsModule
   ],
   providers: [
     {
@@ -130,6 +142,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CookieService
   ],
   bootstrap: [AppComponent],
-  entryComponents:[ListCommandeComponent, ListCommandesComponent]
+  entryComponents:[ListCommandeComponent, ListCommandesComponent, NotificationComponent]
 })
 export class AppModule {}

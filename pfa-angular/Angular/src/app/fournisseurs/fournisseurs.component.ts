@@ -61,8 +61,6 @@ export class FournisseursComponent implements OnInit {
   deleteFour(id) {
     this.fournisseurService.deleteFournisseur(id).subscribe(
       response => {
-        console.log(response);
-        console.log('delete succ');
         this.deletev = false;
         this.refrechFournisseurs();
       },

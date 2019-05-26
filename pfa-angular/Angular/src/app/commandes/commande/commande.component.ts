@@ -44,7 +44,7 @@ export class CommandeComponent implements OnInit {
       data =>{
         console.log(data);
         for(let i=0;i<this.dataSource.length;i++){
-          this.produitService.updateProduit(this.dataSource[i].produit.prodId,{quantiteStock:this.dataSource[i].produit.quantiteStock-this.dataSource[i].quantite}).subscribe(
+          this.produitService.updateProduit(this.dataSource[i].produit.prodId,{quantiteStock:this.dataSource[i].produit.quantiteStock-this.dataSource[i].quantite,quantiteVendu:this.dataSource[i].produit.quantiteVendu+this.dataSource[i].quantite}).subscribe(
             data=>{
               console.log(data);
             }

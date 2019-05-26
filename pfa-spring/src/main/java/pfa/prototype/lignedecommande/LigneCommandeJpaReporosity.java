@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface LigneCommandeJpaReporosity extends JpaRepository<Lignedecommande, Integer> {
      List<Lignedecommande> findLignedecommandeByCommande(Commande commande);
+
+     void deleteByLignedecommandePK_CommandeId(int id);
 }

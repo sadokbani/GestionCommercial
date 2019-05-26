@@ -15,8 +15,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "facture")
-@NamedQueries({
-    @NamedQuery(name = "Facture.findAll", query = "SELECT f FROM Facture f")})
+
 public class Facture implements Serializable {
 
 

@@ -9,7 +9,12 @@
       <mat-error>this filed is empty</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input  [(ngModel)]="prod.categorie" formControlName="categorie" matInput placeholder="Categorie*">
+      <mat-select [(value)]="prod.categorie"  placeholder="Categorie*">
+        <mat-option value="Accessoire">Accessoire</mat-option>
+        <mat-option value="Telephone">Telephone</mat-option>
+        <mat-option value="pc">Ordinateur</mat-option>
+      </mat-select>
+      <!--<input  [(ngModel)]="prod.categorie" formControlName="categorie" matInput placeholder="Categorie*">-->
       <mat-error>this filed is empty</mat-error>
     </mat-form-field>
     <mat-form-field>
@@ -30,11 +35,10 @@
 
 
     <mat-form-field >
-      <mat-select [(value)]="aaaa" formControlName="fournisseur" placeholder="Fournisseur">
-        <mat-option>None</mat-option>
-        <ng-container *ngFor="let fourr of fours">
-          <mat-option value="{{fourr.fourId}}">{{fourr.nom}}</mat-option>
-        </ng-container>
+      <mat-select [(value)]="prod.fourId"  placeholder="Fournisseur">
+
+          <mat-option *ngFor="let fourr of fours" [value]="fourr" >{{fourr.nom}}</mat-option>
+
       </mat-select>
     </mat-form-field>
 

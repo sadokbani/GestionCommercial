@@ -1,10 +1,13 @@
 package pfa.prototype.produit;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pfa.prototype.PrototypeApplication;
 import pfa.prototype.fournisseur.Fournisseur;
 import pfa.prototype.fournisseur.FournisseurJpaReporosity;
 
@@ -14,6 +17,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ProduitRessource {
+    private static final Logger logger = LoggerFactory.getLogger(PrototypeApplication.class);
     @Autowired
     private ProduitJpaReporosity produitJpaReporosity;
 
@@ -45,12 +49,19 @@ public class ProduitRessource {
 
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
         } else {
+//            logger.info(existingProd.getQuantiteVendu().toString());
+//            logger.info(prod.getQuantiteVendu().toString());
+//            logger.info(prod.getQuantiteStock().toString());
             if(prod.getCategorie() != null) existingProd.setCategorie(prod.getCategorie());
             if(prod.getNom() != null) existingProd.setNom(prod.getNom());
+            if(prod.getQuantiteVendu() != 0) existingProd.setQuantiteVendu(prod.getQuantiteVendu());
             if(prod.getPrix() != null) existingProd.setPrix(prod.getPrix());
             if(prod.getImage() != null) existingProd.setImage(prod.getImage());
             if(prod.getDescription() != null) existingProd.setDescription(prod.getDescription());
             if(prod.getQuantiteStock() != null) existingProd.setQuantiteStock(prod.getQuantiteStock());
+            if(prod.getFourId() != null) existingProd.setFourId(prod.getFourId());
+
+//            logger.info(existingProd.getQuantiteVendu().toString());
 
 
             produitJpaReporosity.save(existingProd);

@@ -1,9 +1,11 @@
-
-<h3 *ngIf="exist()">Tu n'a pas encore des commandes</h3>
+<div *ngIf="exist()" class="alert alert-info">
+  <strong>Info!</strong> Tu n'as pas encore passer des commandes
+</div>
+<!--<h3 *ngIf="exist()">Tu n'a pas encore des commandes</h3>-->
 <div *ngFor="let a of ligneCommande" id="content" #content>
   <p>{{a[0].commande.date | date}}</p>
-  <button (click)="facture()" mat-raised-button color="primary"  [disabled]="a[0].commande.etat==0">Facture</button>
-  <button (click)="devis(a)" style="margin-left: 5px" mat-raised-button >Devis</button>
+  <button (click)="devis(a,'facture')" mat-raised-button color="primary"  [disabled]="a[0].commande.etat==0">Facture</button>
+  <button (click)="devis(a,'devis')" style="margin-left: 5px" mat-raised-button >Devis</button>
   <mat-grid-list cols="3" rowHeight="100px" *ngFor="let b of a">
     <mat-grid-tile colspan="1">
       <img style="width: 40%; height: 50%" src="./assets/img/{{b.produit.image}}">
@@ -22,6 +24,7 @@
     </mat-grid-tile>
 
   </mat-grid-list>
+  <button *ngIf="a[0].commande.etat==0" (click)="annuler(a[0].commande.commandeId)" style="margin-left: 80%" mat-raised-button color="warn" >Annuler</button>
 
 </div>
 

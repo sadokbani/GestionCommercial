@@ -4,6 +4,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {Prod} from "../produits/produit/produit.component";
 import {CommandeService} from "../starter/list-commande/service/commande.service";
 import {Router} from "@angular/router";
+import {FactService} from "../starter/list-commandes/service/fact.service";
 
 
 export class Commande{
@@ -21,13 +22,14 @@ export class Commande{
   styleUrls: ['./commandes.component.css']
 })
 export class CommandesComponent implements OnInit {
-  displayedColumns: string[] = ['commandeId', 'date', 'etat', 'userId', 'détail'];
+  displayedColumns: string[] = ['commandeId', 'date', 'etat', 'userId', 'détail', 'delete'];
   dataSource= new MatTableDataSource<Comm>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private commandeService: CommandeService,
-              private router: Router) { }
+              private router: Router,
+              private factService:FactService) { }
 
   ngOnInit() {
     this.refreshCommande();
@@ -52,5 +54,32 @@ export class CommandesComponent implements OnInit {
 
   commandeDetail(id){
     this.router.navigate(['/admin/commande', id]);
+  }
+
+  suppCommande(a){
+        this.factService.retrieveDevis(a).subscribe(
+          data =>{
+            this.factService.deleteDevis(data.devisId).subscribe();
+          }
+        );
+        this.factService.retrieveFacture(a).subscribe(
+          data =>{
+            this.factService.deleteFacture(data.factId).subscribe();
+          }
+        );
+        this.factService.deleteLigneCommande(a).subscribe(
+          data =>{
+            this.factService.deleteCommande(a).subscribe(
+              data =>{ this.refreshCommande();}
+            );
+            }
+        );
+
+
+
+
+
+
+
   }
 }

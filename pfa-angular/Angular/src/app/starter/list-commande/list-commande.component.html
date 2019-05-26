@@ -30,14 +30,16 @@
     <p>{{a.prix}} DT</p>
   </mat-grid-tile>
 </mat-grid-list>
-<div style="position: center" *ngIf="!btn">
-  <h1>Votre panier est vide !</h1>
-  <h6>Explorez nos catégories et découvrez nos meilleures offres!</h6>
+<!--<div style="position: center" *ngIf="!btn">-->
+  <!--<h1>Votre panier est vide !</h1>-->
+  <!--<h6>Explorez nos catégories et découvrez nos meilleures offres!</h6>-->
+<!--</div>-->
+<div class="alert alert-info" *ngIf="!btn">
+  <strong>Votre panier est vide !</strong> Explorez nos catégories et découvrez nos meilleures offres!
 </div>
-
 <h1 *ngIf="total()">Total = {{total()}} DT</h1>
 <div style="margin-left: 30px" class="row">
-  <button mat-raised-button color="primary" (click)="ajouterCommande()" [disabled]="!valide">Passer votre commande</button>
+  <button *ngIf="btn" mat-raised-button color="primary" (click)="ajouterCommande()" [disabled]="!valide">Passer votre commande</button>
 
   <button  *ngIf="btn" mat-icon-button color="warn" (click)="removee()"><mat-icon>delete_outline</mat-icon></button>
 </div>

@@ -33,6 +33,7 @@
             <div class="navbar-collapse">
                 <app-navigation class="w-100" (toggleSidebar)="toggleSidebar()"></app-navigation>
               <a routerLink="" mat-button>Accueil</a>
+              <a (click)="notification()" [matBadge]="notifNb" mat-button>Notification</a>
               <a *ngIf="loginService.isUserLoggedIn()" (click)="loginService.logOut()" mat-button>Logout</a>
             </div>
         </nav>

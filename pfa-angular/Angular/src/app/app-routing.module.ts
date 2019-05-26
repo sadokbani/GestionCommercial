@@ -14,15 +14,23 @@ import {FournisseurComponent} from './fournisseurs/fournisseur/fournisseur.compo
 import {AcceuilComponent} from './starter/acceuil/acceuil.component';
 import {AuthGaurdService} from "./auth-gaurd.service";
 import {CommandeComponent} from "./commandes/commande/commande.component";
+import {TelephoneComponent} from "./starter/telephone/telephone.component";
+import {AccessoireComponent} from "./starter/accessoire/accessoire.component";
+import {PcComponent} from "./starter/pc/pc.component";
+import {AdminComponent} from "./admin/admin.component";
 
 export const Approutes: Routes = [
   { path: '', component : StarterComponent , children : [
       { path: 'login', component : LoginComponent },
+      { path: 'telephone', component : TelephoneComponent },
+      { path: 'accessoire', component : AccessoireComponent },
+      { path: 'pc', component : PcComponent },
       { path: 'inscription', component : UsersComponent },
       { path: '', component : AcceuilComponent }
       ] },
   { path: 'admin', component : FullComponent ,canActivate:[AuthGaurdService] , children : [
       {  path : 'produits' , component : ProduitsComponent},
+      {  path : 'stat' , component : AdminComponent},
       {  path : 'produit/:id' , component : ProduitComponent},
       {  path : 'commande/:id' , component : CommandeComponent},
       { path: 'fournisseurs' , component : FournisseursComponent},

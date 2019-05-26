@@ -7,13 +7,13 @@
 
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
         <a routerLink="" mat-button>Accueil</a>
-        <a href="#" mat-button>Ordinateurs</a>
-        <a href="#" mat-button>Telephones</a>
-        <a href="#" mat-button>Accessoires</a>
+        <a routerLink="/pc" mat-button>Ordinateurs</a>
+        <a routerLink="/telephone" mat-button>Telephones</a>
+        <a routerLink="/accessoire" mat-button>Accessoires</a>
 
 
       <span class="menu-spacer"></span>
-      <a *ngIf="admin" mat-button routerLink="/admin">Admin</a>
+      <a *ngIf="admin" mat-button routerLink="/admin/stat">Admin</a>
       <a *ngIf="loginService.isUserLoggedIn() && !admin" (click)=" listCommande() " mat-button>List Commande</a>
       <a (click)="onCreatee()" mat-button *ngIf="!admin">Panier<mat-icon [matBadge]="listProduit()" matBadgeColor="primary" svgIcon="thumbs-up"  ></mat-icon></a>
         <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" mat-button>Login</a>

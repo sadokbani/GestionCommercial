@@ -24,7 +24,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: 'commandes',
-    title: 'Gerer vos commandes',
+    title: 'Gerer vos commande',
     icon: 'mdi mdi-backburger',
     class: '',
     label: '',
@@ -33,8 +33,8 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: 'promotions',
-    title: 'Gerer vos promotions',
+    path: 'stat',
+    title: 'Vos statistiques' ,
     icon: 'mdi mdi-poll', //mdi-arrange-bring-to-front
     class: '',
     label: '',
@@ -53,7 +53,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
 
-  {
+  /*{
     path: 'users',
     title: 'Gerer vos users',
     icon: 'mdi mdi-tablet',
@@ -62,7 +62,7 @@ export const ROUTES: RouteInfo[] = [
     labelClass: '',
     extralink: false,
     submenu: []
-  },
+  },*/
   // {
   //   path: '/component/pagination',
   //   title: 'Pagination',

@@ -14,7 +14,8 @@ export class Prod {
     public prix?: number,
     public quantiteStock?: number,
     public image?: string,
-    public fourId?: Fournisseur) {}
+    public fourId?: Fournisseur,
+    public quantiteVendu?: number) {}
 }
 
 
@@ -36,11 +37,11 @@ export class ProduitComponent implements OnInit {
   form: FormGroup = new FormGroup({
     $key: new FormControl(null), //id
     firstName: new FormControl('', Validators.required),
-    categorie : new FormControl('', Validators.required),
+    //categorie : new FormControl('', Validators.required),
     prix : new FormControl('', Validators.required),
     quantiteStock : new FormControl('', Validators.required),
     description : new FormControl('', Validators.required),
-    fournisseur: new FormControl(0)
+    //fournisseur: new FormControl(0)
 
   });
   constructor(private produitService: ProduitService,
@@ -55,6 +56,7 @@ export class ProduitComponent implements OnInit {
     if (this.id != -1 ) {
       this.produitService.retrieveProduit(this.id).subscribe(
         response => {
+          console.log(response);
           this.prod = response;
         }
       ); }
@@ -72,9 +74,10 @@ export class ProduitComponent implements OnInit {
   }
 
   ajouterProduit() {
-    this.four = new Fournisseur(this.aaaa);
-    this.prod = new Prod(this.prod.nom, this.prod.categorie,this.prod.description, this.prod.prix, this.prod.quantiteStock, this.aaa , this.four);
-
+   // this.four = new Fournisseur(this.aaaa);
+   // this.prod = new Prod(this.prod.nom, this.prod.categorie,this.prod.description, this.prod.prix, this.prod.quantiteStock, this.aaa , this.four);
+    //console.log(this.prod);
+    this.prod.image= this.aaa;
     if (this.id == -1) {
       this.produitService.ajoutProduit(this.prod).subscribe(
         data => {
@@ -93,9 +96,12 @@ export class ProduitComponent implements OnInit {
         }
       );
     }
-    console.log(this.formData);
+    //console.log(this.formData);
     this.fileService.addImage(this.formData).subscribe(
-      response => console.log(response)
+      response => console.log(response),
+      error =>{
+        console.log("no image")
+      }
     );
   }
 

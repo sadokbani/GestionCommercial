@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
         sessionStorage.setItem('User', JSON.stringify(data));
         if (data.grade == 0) {this.router.navigate(['/']);}
-        if (data.grade == 1) {this.router.navigate(['/admin']);}
+        if (data.grade == 1) {this.router.navigate(['/admin/stat']);}
 
       },
       error => {

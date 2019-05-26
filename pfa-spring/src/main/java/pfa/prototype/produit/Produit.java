@@ -20,8 +20,7 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "produit")
-@NamedQueries({
-    @NamedQuery(name = "Produit.findAll", query = "SELECT p FROM Produit p")})
+
 public class Produit implements Serializable {
 
 
@@ -45,6 +44,8 @@ public class Produit implements Serializable {
     private Float prix;
     @Column(name = "quantiteStock")
     private Integer quantiteStock;
+    @Column(name = "quantiteVendu")
+    private Integer quantiteVendu=0;
     @Column(name = "image")
     private String image;
     @JoinColumn(name = "fourId", referencedColumnName = "fourId")
@@ -58,12 +59,13 @@ public class Produit implements Serializable {
     }
 
 
-    public Produit(String nom, String categorie, String description, Float prix, Integer quantiteStock, String image, @NotNull Fournisseur fourId) {
+    public Produit(String nom, String categorie, String description, Float prix, Integer quantiteStock, Integer quantiteVendu, String image, @NotNull Fournisseur fourId) {
         this.nom = nom;
         this.categorie = categorie;
         this.description = description;
         this.prix = prix;
         this.quantiteStock = quantiteStock;
+        this.quantiteVendu = quantiteVendu;
         this.image = image;
         this.fourId = fourId;
     }
@@ -74,6 +76,14 @@ public class Produit implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getQuantiteVendu() {
+        return quantiteVendu;
+    }
+
+    public void setQuantiteVendu(Integer quantiteVendu) {
+        this.quantiteVendu = quantiteVendu;
     }
 
     public String getImage() {
