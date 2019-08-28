@@ -79,6 +79,9 @@ export class ListCommandesComponent implements OnInit {
   }
 
   devis(a:[any],c:string){
+    console.log("hedha a");
+    console.log(a);
+    let x=0;
     const doc = new jsPDF();
     let b= new Date(a[0].commande.date);
     let total:number=0;
@@ -94,7 +97,7 @@ export class ListCommandesComponent implements OnInit {
 
     doc.setFontSize(16);
    // doc.setTextColor(0,0,0);
-    doc.text('Facture effectuée : ',20,60);
+    doc.text('Commande effectuée a : ',20,60);
     doc.text(b.toDateString(),80,60);
    // doc.setTextColor(0,230,0);
     doc.text('Nom',20,90);
@@ -107,13 +110,14 @@ export class ListCommandesComponent implements OnInit {
       doc.text(a[i].produit.prix.toString()+' DT',90,110*(i/5+1));
       doc.text(a[i].quantite.toString(),140,110*(i/5+1));
      // doc.text(b.toDateString(),130,30*(i+1));
+      x=110*(i/5+1);
     }
     //doc.addImage("./assets/img/cla.jpg", 'JPG', 15, 40, 180, 160);
 
     doc.setFontSize(40);
-    doc.text('Total',140,180);
+    doc.text('Total',140,x+30);
     doc.setFontSize(20);
-    doc.text(total.toString()+' DT',145,200);
+    doc.text(total.toString()+' DT',145,x+50);
     doc.setFontSize(50);
     if(c == 'facture'){
       doc.text('Facture',80,30);

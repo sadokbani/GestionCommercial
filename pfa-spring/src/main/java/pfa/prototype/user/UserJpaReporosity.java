@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface UserJpaReporosity extends JpaRepository<User, Integer> {
     User findByAdresseAndPassword(String adr, String pass) ;
+    User findByAdresse(String adr);
 }

@@ -52,7 +52,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { ListCommandeComponent } from './starter/list-commande/list-commande.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 
 import { CookieService } from 'ngx-cookie-service';
 import {ChartsModule} from "ng2-charts";
@@ -66,6 +66,7 @@ import { PcComponent } from './starter/pc/pc.component';
 import { AdminComponent } from './admin/admin.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { NotificationComponent } from './notification/notification.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -130,7 +131,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatBottomSheetModule,
     MatGridListModule,
     MatDialogModule,
-    CarouselModule, WavesModule,ChartsModule,MatTabsModule
+    CarouselModule, WavesModule,ChartsModule,MatTabsModule,MatMenuModule
   ],
   providers: [
     {

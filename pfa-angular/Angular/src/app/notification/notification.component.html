@@ -1,0 +1,57 @@
+
+<div *ngIf="!produit[0] && !a[0]" class="alert alert-info">
+  <strong>Info!</strong> Pas encore de notification
+</div>
+<div *ngIf="produit[0]" class="alert alert-warning">
+  <strong>Warning!</strong> Quantite de stock est trés <strong>Faible !</strong>
+</div>
+<mat-grid-list cols="4" rowHeight="100px" *ngFor="let b of produit">
+  <mat-grid-tile colspan="1">
+    <img style="width: 40%; height: 50%" src="./assets/img/{{b.image}}">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <mat-card-header>
+      <mat-card-title>{{b.nom}}       </mat-card-title>
+      <mat-card-subtitle>{{b.categorie}}</mat-card-subtitle>
+    </mat-card-header>
+    <!--<p><strong>{{b.nom}}</strong> {{b.categorie}}</p>-->
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <!--<strong>{{b.quantiteStock}}</strong>-->
+    <mat-card-header>
+      <mat-card-title>{{b.quantiteStock}}</mat-card-title>
+      <!--&lt;!&ndash;<mat-card-title>Quantité Stock</mat-card-title>&ndash;&gt;-->
+      <!--&lt;!&ndash;<mat-card-subtitle>{{b.quantiteStock}}</mat-card-subtitle>&ndash;&gt;-->
+    </mat-card-header>
+  </mat-grid-tile>
+<mat-grid-tile colspan="1">
+  <button mat-icon-button (click)="details(b.prodId)"><mat-icon>launch</mat-icon></button>
+  </mat-grid-tile>
+
+</mat-grid-list>
+
+<div *ngIf="a[0]" class="alert alert-danger">
+  <strong>Danger!</strong>  Quantite de stock est  <strong>Null !</strong>
+</div>
+<mat-grid-list cols="4" rowHeight="100px" *ngFor="let b of a">
+  <mat-grid-tile colspan="1">
+    <img style="width: 40%; height: 50%" src="./assets/img/{{b.image}}">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <mat-card-header>
+      <mat-card-title>{{b.nom       }}</mat-card-title>
+      <mat-card-subtitle>{{b.categorie}}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <mat-card-header>
+      <mat-card-title>{{b.quantiteStock}}</mat-card-title>
+      <!--<mat-card-title>Quantité Stock</mat-card-title>-->
+      <!--<mat-card-subtitle>{{b.quantiteStock}}</mat-card-subtitle>-->
+    </mat-card-header>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <button mat-icon-button (click)="details(b.prodId)"><mat-icon>launch</mat-icon></button>
+  </mat-grid-tile>
+
+</mat-grid-list>

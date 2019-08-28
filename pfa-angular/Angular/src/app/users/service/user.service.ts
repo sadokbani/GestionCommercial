@@ -14,4 +14,10 @@ export class UserService {
   findUser(adresse, password) {
     return this.http.get<User>(`http://localhost:8080/User/${adresse}/${password}`);
   }
+  findUserById(id) {
+    return this.http.get<User>(`http://localhost:8080/User/${id}`);
+  }
+  updateUser(id, user) {
+    return this.http.put(`http://localhost:8080/User/${id}`, user);
+  }
 }

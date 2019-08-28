@@ -15,6 +15,13 @@ export class ProduitService {
   retrieveAllProduitsV()  {
     return this.http.get<[Prod]>(`http://localhost:8080/Produit/valide`);
   }
+  retrieveAllProduitsInv()  {
+    return this.http.get<[Prod]>(`http://localhost:8080/Produit/invalide`);
+  }
+
+  retrieveAllProduitsRech(ch)  {
+    return this.http.get<[Prod]>(`http://localhost:8080/Produit/rech/${ch}`);
+  }
   deleteProduit(id) {
     return this.http.delete(`http://localhost:8080/Produit/${id}`);
   }

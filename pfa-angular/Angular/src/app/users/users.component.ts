@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from './service/user.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 export class User {
+  userId: any;
   constructor(
-    public nom: string,
-    public prenom: string,
-    public telephone: string,
-    public pays: string,
-    public adresse: string,
-    public password: string,
+    public nom?: string,
+    public prenom?: string,
+    public telephone?: string,
+    public pays?: string,
+    public adresse?: string,
+    public password?: string,
     public grade?: number
   ) {}
 }
@@ -19,23 +20,32 @@ export class User {
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  id:number;
   pass = '';
-  passV = '';
-  user: User;
+  passV ;
+  user: User=new User();
   nom = '';
   prenom = '';
   pays = '';
   telephone = '';
   email = '';
   emailv= false;
-  constructor(private userService: UserService,
+  constructor(private route: ActivatedRoute,private userService: UserService,
               private router: Router) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+    if (this.id != -1 ) {
+      this.userService.findUserById(this.id).subscribe(
+        response => {
+          this.user =response;
+          this.user.password=null;
+        }
+      ); }
   }
 
 
-
+  hide1 =true;
   hide = true;
   form: FormGroup = new FormGroup({
     $key: new FormControl(null), //id
@@ -50,17 +60,32 @@ export class UsersComponent implements OnInit {
   });
 
   ajouterUser() {
-    this.user = new User(this.nom, this.prenom, this.telephone, this.pays , this.email, this.pass);
-    this.userService.ajoutUser(this.user).subscribe(
-      data => {
-        console.log(data);
-        this.emailv = false;
-        this.router.navigate(['/']);
-      },
-      error => {
-        this.emailv = true;
-      }
-    );
+    //this.user = new User(this.nom, this.prenom, this.telephone, this.pays , this.email, this.pass);
+    if (this.id == -1 ){
+      this.userService.ajoutUser(this.user).subscribe(
+        data => {
+          console.log(data);
+          this.emailv = false;
+          this.router.navigate(['/']);
+        },
+        error => {
+          this.emailv = true;
+        }
+      );
+    } else {
+      this.userService.updateUser(this.id,this.user).subscribe(
+        data => {
+          console.log(data);
+          this.emailv = false;
+          this.router.navigate(['/']);
+        },
+        error => {
+          this.emailv = true;
+        }
+      )
+    }
+
+
 
   }
 

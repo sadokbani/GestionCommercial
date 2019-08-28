@@ -1,0 +1,52 @@
+
+<mat-tab-group>
+  <mat-tab label="General">
+    <div class="container" style="margin-top: 50px">
+      <div style="display: block">
+        <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"></canvas>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="PC">
+    <div class="container" style="margin-top: 50px">
+      <div style="display: block">
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"></canvas>
+      </div>
+    </div>
+  </mat-tab>
+ <mat-tab label="Telephone">
+    <div class="container" style="margin-top: 50px">
+      <div style="display: block">
+        <canvas baseChart
+                [datasets]="barChartData1"
+                [labels]="barChartLabels1"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"></canvas>
+      </div>
+    </div>
+  </mat-tab>
+ <mat-tab label="Accessoire">
+    <div class="container" style="margin-top: 50px">
+      <div style="display: block">
+        <canvas baseChart
+                [datasets]="barChartData2"
+                [labels]="barChartLabels2"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"></canvas>
+      </div>
+    </div>
+  </mat-tab>
+
+</mat-tab-group>
+
+

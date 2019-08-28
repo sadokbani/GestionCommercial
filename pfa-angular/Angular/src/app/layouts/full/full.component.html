@@ -33,7 +33,8 @@
             <div class="navbar-collapse">
                 <app-navigation class="w-100" (toggleSidebar)="toggleSidebar()"></app-navigation>
               <a routerLink="" mat-button>Accueil</a>
-              <a (click)="notification()" [matBadge]="notifNb" mat-button>Notification</a>
+
+              <a (click)="notification()"  mat-button><mat-icon [matBadge]="aaaaa()">notifications</mat-icon></a>
               <a *ngIf="loginService.isUserLoggedIn()" (click)="loginService.logOut()" mat-button>Logout</a>
             </div>
         </nav>
@@ -74,7 +75,7 @@
     <!-- footer -->
     <!-- ============================================================== -->
     <footer class="footer">
-        © 2018 Admin Pro
+        © SADOK 2019
     </footer>
     <!-- ============================================================== -->
     <!-- End footer -->

@@ -39,7 +39,7 @@
 </div>
 <h1 *ngIf="total()">Total = {{total()}} DT</h1>
 <div style="margin-left: 30px" class="row">
-  <button *ngIf="btn" mat-raised-button color="primary" (click)="ajouterCommande()" [disabled]="!valide">Passer votre commande</button>
+  <button *ngIf="btn" mat-raised-button color="primary" (click)="ajouterCommande()" >Passer votre commande</button>
 
   <button  *ngIf="btn" mat-icon-button color="warn" (click)="removee()"><mat-icon>delete_outline</mat-icon></button>
 </div>

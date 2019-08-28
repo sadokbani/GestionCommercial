@@ -25,7 +25,7 @@ export const Approutes: Routes = [
       { path: 'telephone', component : TelephoneComponent },
       { path: 'accessoire', component : AccessoireComponent },
       { path: 'pc', component : PcComponent },
-      { path: 'inscription', component : UsersComponent },
+      { path: 'inscription/:id', component : UsersComponent },
       { path: '', component : AcceuilComponent }
       ] },
   { path: 'admin', component : FullComponent ,canActivate:[AuthGaurdService] , children : [

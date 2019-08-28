@@ -108,40 +108,47 @@ listProduits:Prodd[]= [];
   }
 
   ajouterCommande(){
-    this.commande= new Commande(new Date(),0,this.user);
-    this.commandeService.ajoutCommande(this.commande).subscribe(
-      data => {
-        this.com= <Comm>data;
-        let fact:{dateFact:Date,total:number,commandeId:{commandeId:number} };
-        fact={dateFact:new Date(),total:this.total(),commandeId:{commandeId:this.com.commandeId}};
-        let devis:{dateDevis:Date,total:number,commandeId:{commandeId:number} };
-        devis={dateDevis:new Date(),total:this.total(),commandeId:{commandeId:this.com.commandeId}};
-        this.commandeService.ajoutFacture(fact).subscribe(
-          response => {console.log(response);}
-        );
-        this.commandeService.ajoutDevis(devis).subscribe(
-          response => {
-            console.log('aaaaaaa');
-            console.log(response);
-          }
-        );
-        for (let i=0;i<this.listProduits.length;i++){
-          let x : {lignedecommandePK:{prodId:number, commandeId: number},quantite:number};
-          x= {lignedecommandePK: {prodId:this.listProduits[i].prodId, commandeId:this.com.commandeId}, quantite:this.listProduits[i].quantite};
-          console.log(x);
-          this.commandeService.ajoutLigneCommande(x).subscribe(
-            response => {console.log(response);},
-            error => {
-              console.log('aaaaaaa ligne');
+    if(this.valide){
+      this.commande= new Commande(new Date(),0,this.user);
+      this.commandeService.ajoutCommande(this.commande).subscribe(
+        data => {
+          this.com= <Comm>data;
+          let fact:{dateFact:Date,total:number,commandeId:{commandeId:number} };
+          fact={dateFact:new Date(),total:this.total(),commandeId:{commandeId:this.com.commandeId}};
+          let devis:{dateDevis:Date,total:number,commandeId:{commandeId:number} };
+          devis={dateDevis:new Date(),total:this.total(),commandeId:{commandeId:this.com.commandeId}};
+          this.commandeService.ajoutFacture(fact).subscribe(
+            response => {console.log(response);}
+          );
+          this.commandeService.ajoutDevis(devis).subscribe(
+            response => {
+              console.log('aaaaaaa');
+              console.log(response);
             }
           );
+          for (let i=0;i<this.listProduits.length;i++){
+            let x : {lignedecommandePK:{prodId:number, commandeId: number},quantite:number};
+            x= {lignedecommandePK: {prodId:this.listProduits[i].prodId, commandeId:this.com.commandeId}, quantite:this.listProduits[i].quantite};
+            console.log(x);
+            this.commandeService.ajoutLigneCommande(x).subscribe(
+              response => {console.log(response);},
+              error => {
+                console.log('aaaaaaa ligne');
+              }
+            );
 
 
-        }
-      },
-      error => {
-        console.log('aaaaaaa erreru');
-      });
-    this.dialogRef.close();
+          }
+        },
+        error => {
+          console.log('aaaaaaa erreru');
+        });
+      this.dialogRef.close();
+    }
+    else {
+      this.dialogRef.close();
+      this.route.navigate(['/login']);
+    }
+
   }
 }

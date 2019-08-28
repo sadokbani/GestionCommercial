@@ -31,8 +31,13 @@ export class MenuComponent implements OnInit {
 
 
     this.user=JSON.parse(sessionStorage.getItem('User'));
+    console.log(this.user);
     if(this.user != null){this.isAdmin();}
 
+  }
+
+  modifierUser(){
+    this.router.navigate([`/inscription/${JSON.parse(sessionStorage.getItem('User')).userId}`])
   }
 
   listCommande(){

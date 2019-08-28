@@ -1,6 +1,13 @@
 
 <div class="container">
   <div style="margin: 10px">
+    <mat-form-field class="container example-form-field">
+      <input matInput type="text" placeholder="Chercher" (keyup)="rech(value)" [(ngModel)]="value">
+      <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear"  (click)="refrechProduits()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <br>
     <mdb-carousel   [isControls]="false" [animation]="'slide'">
       <mdb-carousel-item>
         <img class="d-block w-100" src="./assets/1.jpg" alt="First slide">

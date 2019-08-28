@@ -17,7 +17,18 @@
       <a *ngIf="loginService.isUserLoggedIn() && !admin" (click)=" listCommande() " mat-button>List Commande</a>
       <a (click)="onCreatee()" mat-button *ngIf="!admin">Panier<mat-icon [matBadge]="listProduit()" matBadgeColor="primary" svgIcon="thumbs-up"  ></mat-icon></a>
         <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" mat-button>Login</a>
-        <a *ngIf="loginService.isUserLoggedIn()" (click)=" logout()" mat-button>Logout</a>
+
+      <button *ngIf="loginService.isUserLoggedIn()" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="modifierUser()">
+          <span>Paramètres compte</span>
+        </button>
+        <button (click)=" logout()" mat-menu-item>
+        Logout
+        </button>
+      </mat-menu>
 
     </mat-toolbar-row>
   </mat-toolbar>

@@ -26,9 +26,19 @@ public class ProduitRessource {
         return produitJpaReporosity.findAll();
     }
 
+    @GetMapping(path = "/Produit/rech/{ch}")
+    public List<Produit> getProduitCher(@PathVariable("ch") String ch) {
+        return produitJpaReporosity.findByNomContaining(ch);
+    }
+
     @GetMapping(path = "/Produit/valide")
     public List<Produit> getAllProd() {
         return produitJpaReporosity.findAllProd();
+    }
+
+    @GetMapping(path = "/Produit/invalide")
+    public List<Produit> getAllProdi() {
+        return produitJpaReporosity.findAllProdAlert();
     }
 
     @GetMapping("/Produit/{id}")
@@ -42,7 +52,7 @@ public class ProduitRessource {
         return new ResponseEntity<Produit>(prod, HttpStatus.OK);
     }
 
-    @PutMapping("/Produit/{id}")
+    @PutMapping(" ")
     public ResponseEntity<Void> updateProduit(@PathVariable("id") Integer id,@RequestBody Produit prod) {
         Produit existingProd = produitJpaReporosity.findById(id).get();
         if (existingProd == null) {
